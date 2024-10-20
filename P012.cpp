@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <string>
 #include <locale.h>
@@ -30,17 +31,38 @@ setlocale(LC_ALL, "es_MX.UTF-8");
 //Realizaremos un login para un juego que se llamara "El mecostragas"
 
 //Vamos a definir las variables
-std::string nombrejugador,correo,contraseña;
+std::string nombrejugador,correo,contrasena;
 
 // Pedimos al jugador sus datos papus
 std::cout << "Por favor introduce tu nombre: ";
 std::getline(std::cin, nombrejugador); // Usamos getline para permitir entradas vacías
-std::cout << "Por favor introduce tu correo: ";
-std::getline(std::cin, correo); 
-std::cout << "Por favor introduce tu contraseña: ";
-std::getline(std::cin, contraseña); 
+ std::string correoCorrecto = "aronpazcar";   // Usuario correcto
+    std::string contrasenaCorrecta = "190506";  // Contraseña correcta
+    setlocale(LC_ALL, "es_MX.UTF-8");
+   
 
-if (nombrejugador.empty() || correo.empty() || contraseña.empty()) {
+    // Ingreso del correo
+    std::cout << "Ingrese su nombre de correo : ";
+    std::getline(std::cin, correo);
+
+    // Validar si el nombre del correo contiene solo letras
+    if (!esSoloLetras(correo)) {
+        std::cout << "Error: El nombre del correo es erroneo ." << std::endl;
+        return 1;  // Salir con error
+    }
+
+    // Ingreso de la contraseña
+    std::cout << "Ingrese su contraseña : ";
+    std::getline(std::cin, contrasena);
+
+    // Validar si la contraseña contiene solo números
+    if (!esSoloNumeros(contrasena)) {
+        std::cout << "Contraseña incorrecta muajajaja " << std::endl;
+        return 1;  // Salir con error
+    }
+
+
+if (nombrejugador.empty() || correo.empty() || contrasena.empty()) {
 std::cout << "Ingresaste un dato incorrecto o no se reconoce papu, pal lobbyyyy." << std::endl; 
 return 1;
 }else {
